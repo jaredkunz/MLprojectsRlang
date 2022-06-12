@@ -49,9 +49,13 @@ Accuracy: 86.39%
 Num of Support Vects: 193
 Const C: 43.5
 
-# In summary, using svm with vanilladot to find a good classifier, i.e. the Constant C or Margin is somewhere around 43.5 or 64.9
 ```
+In summary, using svm with vanilladot to find a good soft margin classifier, i.e. the Constant C or Margin is somewhere around 43.5 or 64.9
 
+To understand this excercise better, here is a good article on the subject: https://machinelearningmastery.com/support-vector-machines-for-machine-learning/#:~:text=The%20margin%20is%20calculated%20as,are%20called%20the%20support%20vectors.
+
+"The smaller the value of C, the more sensitive the algorithm is to the training data (higher variance and lower bias).
+The larger the value of C, the less sensitive the algorithm is to the training data (lower variance and higher bias)."
 
 Answer to **Exercise Part Two** might look like this type of visual (see below the visual for explanation):
 
