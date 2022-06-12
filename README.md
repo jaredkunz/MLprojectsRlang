@@ -53,7 +53,20 @@ Const C: 43.5
 ```
 
 
-Answer to Exercise Part Two might look like this type of visual:
+Answer to **Exercise Part Two** might look like this type of visual (see below the visual for explanation):
+
 ![image](https://user-images.githubusercontent.com/27638043/173225211-a4750a4a-b8bc-4636-bb9c-40d5c62fc3ce.png)
+
+
+**Laplacedot** looks way out-of-bounds and not valid
+
+**rbfdot** may be a better choice as it shows more support vectors and higher accuracy, but per my education anything in the 90% or above is suspect and needs heavy scrutiny
+
+**splinedot** has higher accuracy but fewer support vectors
+
+It appears the sweet spot is using **vanilladot**, **anovadot** or maybe **polydot** but you get fewer support vectors with polydot
+
+**tanhdot** you get much less accuracy and fewer support vectors, yet that doesn't mean it's not a possible option to explore as well
+
 
 
