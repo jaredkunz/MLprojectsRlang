@@ -18,11 +18,42 @@ value of C that works well; for many values of C, almost all predictions will be
 
 **Exercise Part Two -** Try other (nonlinear) kernels as well; they can sometimes be useful and might provide better predictions than vanilladot.
 
-For example, the equation (answer to Part one) might be:
-![image](https://user-images.githubusercontent.com/27638043/173225687-57d7b53a-0d8f-4ab3-85f5-4e1523f2869e.png)
-![image](https://user-images.githubusercontent.com/27638043/173226481-5d2ad158-ef39-4509-b882-9ee79c885c0e.png)
-![image](https://user-images.githubusercontent.com/27638043/173226340-cf0c17a9-2b93-4bf0-8d75-5ea131cd079f.png)
+For example, the equation for your classifier, i.e. the answer to Exercise Part one might be:
+
+```r
+> aScaledUp
+>The equation is as follows:
+          V1           V2           V3           V4           V5           V6           V7           V8           V9 
+-0.004180985  0.004628256  0.014836154  0.093885681  0.569911183 -0.222436309  0.158114398 -0.001308316 -0.019636394 
+         V10 
+ 0.105437302 
+> a0ScaledUp
+[1] -0.05105346
+> 
+> # Finding C aka the Margin, with this equation is basically sum(aScaledUp V1 to V10) + a0ScaledUp(-0.0511) = 0.6481975
+> # So using this scaling approach, the Margin or C, a good Constant C Classifier between 0 and 1 is:
+[1] 0.6481975
+> 
+> # see what the model predicts with ksvm predict() function
+> PredictFunctScaledUp <- predict(ModelScaledUp, CreditData[, 1:10])
+> 
+> # percent of testing observations that are correctly classified.
+> percent(sum(PredictFunctScaledUp == CreditData$V11) / nrow(CreditData))
+[1] "86.39%"
+
+```
+
+```r
+Using this Final Step: Building SV Fluctuation Chart
+Accuracy: 86.39%
+Num of Support Vects: 193
+Const C: 43.5
+
+# In summary, using svm with vanilladot to find a good classifier, i.e. the Constant C or Margin is somewhere around 43.5 or 64.9
+```
 
 
-Answer to Part Two might look like this type of visual:
+Answer to Exercise Part Two might look like this type of visual:
 ![image](https://user-images.githubusercontent.com/27638043/173225211-a4750a4a-b8bc-4636-bb9c-40d5c62fc3ce.png)
+
+
