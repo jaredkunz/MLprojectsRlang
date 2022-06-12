@@ -22,7 +22,7 @@ For example, the equation for your classifier, i.e. the answer to Exercise Part 
 
 ```r
 > aScaledUp
->The equation is as follows:
+>The coefficient equation is as follows:
           V1           V2           V3           V4           V5           V6           V7           V8           V9 
 -0.004180985  0.004628256  0.014836154  0.093885681  0.569911183 -0.222436309  0.158114398 -0.001308316 -0.019636394 
          V10 
