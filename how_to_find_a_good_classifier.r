@@ -1,6 +1,4 @@
 # Jared Kunz
-# ISYE 6501 Fall 2019
-# Homework Week 01, Problem 2.2-1: ksvm
 # Objectives
 # ---Find a good classifier for this data. 
 # ---Show the equation of your classifier, 
@@ -84,10 +82,7 @@ for (i in 1:10)
 ModelNoScaling <- ksvm(as.matrix(CreditData[, 1:10]), as.factor(CreditData[, 11]),type = "C-svc", kernel = "vanilladot",  C = .002, scaled = FALSE ) 
 
 # in this case, ksvm scaling the data
-# Per the assignment, "You are welcome, but not required, to try other (nonlinear) kernels as well;
-# we not covering them in this course, but they can sometimes be useful and might provide better 
-# predictions than vanilladot."
-
+# You are welcome, but not required, to try other (nonlinear) kernels as well;
 
 # This provides summary info the from the -scaled- model data
 ModelNoScaling
