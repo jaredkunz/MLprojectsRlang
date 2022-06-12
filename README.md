@@ -18,7 +18,7 @@ value of C that works well; for many values of C, almost all predictions will be
 
 **Exercise Part Two -** Try other (nonlinear) kernels as well; they can sometimes be useful and might provide better predictions than vanilladot.
 
-For example, the equation for your classifier, i.e. the answer to Exercise Part one might be:
+For example, the equation for your classifier, i.e. the answer to **Exercise Part** one might be:
 
 ```r
 > aScaledUp
