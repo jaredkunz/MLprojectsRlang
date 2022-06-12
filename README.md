@@ -5,7 +5,7 @@
 **Two Exercises Using R Language and a credit card data set**
 
 **Step One**: Download the data from the link below. **Step Two**. Run the code called "how_to_find_a_good_classifier.r" found in this repo.
-The files credit_card_data.txt (without headers) and credit_card_data-headers.txt (with headers) contains a dataset with 654 data points, 6 continuous and 4 binary predictor variables.
+The files credit_card_data.txt (without headers) and credit_card_data-headers.txt (with headers) contain a dataset with 654 data points, 6 continuous and 4 binary predictor variables.
 
 It has anonymized credit card applications with a binary response variable (last column) indicating if the application was positive or negative. The dataset is the "Credit Approval Data Set" from the UCI Machine Learning Repository (https://archive.ics.uci.edu/ml/datasets/Credit+Approval) without the categorical variables and without data points that have missing values.
 
