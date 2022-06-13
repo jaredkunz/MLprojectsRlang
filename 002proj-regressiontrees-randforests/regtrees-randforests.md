@@ -1,27 +1,44 @@
-Project #002 Regression Trees and Random Forests
+**Project #002 Regression Trees and Random Forests**
+
 Using the crime data set uscrime.txt, http://www.statsci.org/data/general/uscrime.html find the best model you can using  (a) a regression tree model, and  (b) a random forest model.   In R, you can use the tree package or the rpart package, and the randomForest package.  For each model, describe one or two qualitative takeaways you get from analyzing the results (i.e., don’t just stop when you have a good model, but interpret it too). 
 
-To begin, break down the above question  
-Step 1:  Using the crime data set, find the best model you can using
-1a) a regression tree model* -   
-1b) a random forest model**
-Step 2: For each model, describe one or two qualitative takeaways you get from analyzing the results (i.e., don’t just stop when you have a good model, but interpret it too).
-2a) a regression tree model - one or two qualitative takeaways you get from analyzing the results
-2b) a random forest model - one or two qualitative takeaways you get from analyzing the results
+**To begin, break down the above question**
 
-Step 1:  find the best model you can using
-1a) a regression tree model -    You can use the tree package or the rpart package:
-I decided to use the tree package because it seems more intuitive to me than the rpart package.  After some trial and error, I created the following unpruned tree using cross validation with a little more than a 50/50 split (.54 split) of the training and test data:
+**Step 1:  Using the crime data set, find the best model you can using**
+
+**1a)** a regression tree model*   
+**1b)** a random forest model**
+
+**Step 2: For each model, describe one or two qualitative takeaways you get from analyzing the results (i.e., don’t just stop when you have a good model, but interpret it too).**
+
+**2a)** a regression tree model - one or two qualitative takeaways you get from analyzing the results
+
+**2b)** a random forest model - one or two qualitative takeaways you get from analyzing the results
+
+**Step 1:  find the best model you can using
+1a) a regression tree model -    You can use the tree package or the rpart package:**
+
+ I decided to use the tree package because it seems more intuitive to me than the rpart package.  After some trial and error, I created the following unpruned tree using cross validation with a little more than a 50/50 split (.54 split) of the training and test data:
+ 
 ```r
 crime_index = sample(1:nrow(crime_data), nrow(crime_data)*.54)
 crime_train = crime_data[crime_index,]
-crime_test = crime_data[-crime_index,]```
+crime_test = crime_data[-crime_index,]
+```
+![image](https://user-images.githubusercontent.com/27638043/173284512-5bf5e9c4-bc2f-43a7-a84b-8c1449e9829e.png)
+
+![image](https://user-images.githubusercontent.com/27638043/173284490-33111535-7708-46f8-98c6-9141cda62a20.png)
+ 
  
 formula_C_2s = Crime ~ M + So + Ed +       Po2 + LF + M.F + Pop +NW + U1      + Wealth + Ineq + Prob + Time
+
 The predictors - response formula I used is based upon reading the data source website and my approach to remove data with “high collinearity”, i.e. Per the user crime data source website: 
 http://www.statsci.org/data/general/uscrime.html
-“Only one of Po1 and Po2, and only one of U1 and U2, remain in the final regression, because of high collinearity.” 
+
+_“Only one of Po1 and Po2, and only one of U1 and U2, remain in the final regression, because of high collinearity.” 
+
 This means to me, only Po1 or Po1 and U1 or U2 should remain in your regression.  Based upon my analysis, I preferred to keep Po2 and U1 because Po2 appeared to provide a better initial unpruned tree for pruning and U2 didn’t seem to have any visible effect on the tree structure. Here is some additional information about the unpruned tree:
+
 ```r
 > rtree_model1 
 node), split, n, deviance, yval
@@ -39,9 +56,12 @@ node), split, n, deviance, yval
       13) Pop > 21.5 5  147800  724.6 *
      7) NW > 7.65 14 2027000 1305.0  
       14) Po2 < 8.9 6  170800 1041.0 *
-      15) Po2 > 8.9 8 1125000 1503.0 *```
+      15) Po2 > 8.9 8 1125000 1503.0 *
+      
+```
 
-Number of “leave” shown in the “frame” value:
+**Number of “leaves” shown in the “frame” value:**
+
 ```r
 > rtree_model1$frame
       var  n        dev      yval splits.cutleft splits.cutright
@@ -73,25 +93,38 @@ Number of terminal nodes:  7
 Residual mean deviance:  47390 = 1896000 / 40 
 Distribution of residuals:
     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
--573.900  -98.300   -1.545    0.000  110.600  490.100 ```
+-573.900  -98.300   -1.545    0.000  110.600  490.100 
 
-Step 2: For each model, describe one or two qualitative takeaways you get from analyzing the results 
-2a) a regression tree model -  
+```
 
-I created some plots of the deviance at each note of the unpruned tree to see how it changed across the tree I saw that deviance is lowest around 4 or 5 nodes.  I made a log(deviance) version of the plot as well to see how that looked (see next page).
+**Step 2: For each model, describe one or two qualitative takeaways you get from analyzing the results 
+2a) a regression tree model - ** 
 
+I created some plots of the deviance at each note of the unpruned tree to see how it changed across the tree I saw that deviance is lowest around 4 or 5 nodes.  I made a log(deviance) version of the plot as well to see how that looked
+
+![image](https://user-images.githubusercontent.com/27638043/173285009-5236c87b-c534-445f-bd2e-6636b572f135.png)
+![image](https://user-images.githubusercontent.com/27638043/173285027-48556dcb-d5bb-469d-a993-6dd843df58d2.png)
 
   
 
 These deviance plots, along with this helpful site, https://daviddalpiaz.github.io/r4sl/trees.html, I followed the recommendation that “we can use cross-validation to select a good pruning of the tree”:
-plot(crime_treecv$size, sqrt(crime_treecv$dev / nrow(crime_train)), type = "b",  xlab = "Tree Size", ylab = "CV-RMSE")
- 
+
+_plot(crime_treecv$size, sqrt(crime_treecv$dev / nrow(crime_train)), type = "b",  xlab = "Tree Size", ylab = "CV-RMSE")
+ _
+![image](https://user-images.githubusercontent.com/27638043/173285044-12fb8e0f-8294-41fb-8ea5-7c303d2e8645.png)
 
 Based upon this above plot and my deviance plots, I picked 5 as the value for “best” when pruning the tree.  
-rtree_model1_pruned = prune.tree(rtree_model1,best=5)
+
+_rtree_model1_pruned = prune.tree(rtree_model1,best=5)_
+
 The resulting tree looks pretty good and when I ran a prediction on it and created and “actual vs predicted” plot, the prediction and prediction line looked fairly good.  Some “takeaways” are basically, more splits aren’t better but neither are fewer.  Finding “just the right” number of splits leads to a higher quality regression tree model.
 
+  ![image](https://user-images.githubusercontent.com/27638043/173285132-9faaa7e9-719d-4483-a085-66925ed64937.png)
+
+ ![image](https://user-images.githubusercontent.com/27638043/173285138-ad75fc7a-953e-4939-83a6-380a53fc2a8c.png)
+ 
   
+ ```r 
 > sqrt(summary(rtree_model1_pruned)$dev / nrow(crime_train))
 [1] 301.7727
 > 
@@ -99,9 +132,14 @@ The resulting tree looks pretty good and when I ran a prediction on it and creat
 > rmse_prediction(crime_test_prune_pred, crime_test$Crime)
 [1] 247.2929
 
-Step 1:  find the best model you can using
-1b) a random forest model – repeated basically the step 1 and step 2, but this time for random forest.
+```
+
+**Step 1:  find the best model you can using**
+**1b) a random forest model – repeated basically the step 1 and step 2, but this time for random forest.**
+
 After some trial and error, experimentation I found that number of trees at 168 would be a good number as it explains about 49% of variance and has a Mean of Squared Residuals of 75174
+
+```r
 > crime_rf
 
 Call:
@@ -112,13 +150,16 @@ No. of variables tried at each split: 4
 
           Mean of squared residuals: 75174.08
                     % Var explained: 48.65
-
+```
+![image](https://user-images.githubusercontent.com/27638043/173285267-e2323e94-6e03-4426-9667-12738acc1e9c.png)
 
  
-Step 2: For each model, describe one or two qualitative takeaways you get from analyzing the results 
-2b) a random forest model -  
+**Step 2: For each model, describe one or two qualitative takeaways you get from analyzing the results 
+2b) a random forest model - **
+
 Just looking at the number of trees and based upon my initial experiments with number of trees from 300 to 500, Mean of Squared Residuals and variance shows that a higher number of threes does not equate to a higher quality model.  Also I tried removing some predictors and that impacted the quality of the model so I left them all in, although as the following “importance” of the predictors information shows, two of the predictors with the most collinearity are found to be very “important” or are found to have highest percent of Incoming MSE and Incoming Node Purity.  So I’m not sure how much collinearity matters in Random Forest but I would think it should matter.
 
+```r
 > importance_df[order(-importance_df$`%IncMSE`),] 
           %IncMSE IncNodePurity
 Po1     7.2173552    1144282.65
@@ -136,6 +177,12 @@ Wealth  0.7906889     705576.73
 LF      0.7893884     365101.09
 M.F    -0.8444108     286071.99
 U1     -1.4671012     125072.03
-  
+
+```
+
+![image](https://user-images.githubusercontent.com/27638043/173285318-41ca8f3b-b99f-405a-a10c-5cd4f6501772.png)
+![image](https://user-images.githubusercontent.com/27638043/173285336-26ade674-abc9-46ef-8512-cde05ab51665.png)
+
+
 Above are some charts showing the Out-of-bag results (left) and the prediction results.
 
