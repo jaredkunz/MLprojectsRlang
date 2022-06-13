@@ -6,7 +6,9 @@ This is a list of Machine Learning projects written in R Language. Many of these
 
 I plan to give each project a simple ID number between 000 to 999 (I doubt I will create more 1000 projects, tutorials and exercises out here in my lifetime, yet it's possible). Any questions feel free to reach out to me here or on https://jaredkunz.com or my linkedin https://www.linkedin.com/in/jaredkunz/. Thank you,
 
-[**Project #001: How to Find a Good Classifier using Support Vector Machines**](https://github.com/jaredkunz/MLprojectsRlang/tree/main/001proj-svmclassifiers)
+[**Project #001: How to Find Good Classifiers using Support Vector Machines**](https://github.com/jaredkunz/MLprojectsRlang/tree/main/001proj-svmclassifiers)
+
+[**Project #002: How to Build Quality Regression Tree Models & Quality Random Forest Models**](https://github.com/jaredkunz/MLprojectsRlang/tree/main/002proj-regressiontrees-randforests)
 
 The rest of this readme file is in work, but this is the basic structure it will take eventually.
 
