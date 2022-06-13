@@ -2,7 +2,7 @@
 ![RVersion](https://badgen.net/cran/r/data.table)
 # MLprojectsRlang
 ## Overview
-This is a list of Machine Learning projects written in R Language. Many of these projects are tutorials, exercises and personal projects I've worked on as part of graduate courses I've taken. While the exercises and problem statements may be perscribed and sometimes related to different courses, the code written is my own code. If you see similarities in these exercises with any courses you are taking, please do not copy my code and re-use my code in your classes. Please just use my code as an example of one approach. I plan to expand on these tutorials and go deeper into them, i.e. improve them over time as my knowledge increases and based upon any feedback I receive. 
+This is a list of Machine Learning projects written in R Language. Many of these projects are tutorials, exercises and personal projects I've worked on as part of graduate courses I've taken. While the exercises and problem statements may be perscribed and sometimes related to different courses, the code, analysis and results are my own. If you see similarities in these exercises with any courses you are taking, please do not copy my code and re-use my code in your classes. Please just use my code as an example of one approach. I plan to expand on these tutorials and go deeper into them, i.e. improve them over time as my knowledge increases and based upon any feedback I receive. 
 
 I plan to give each project a simple ID number between 000 to 999 (I doubt I will create more 1000 projects, tutorials and exercises out here in my lifetime, yet it's possible). Any questions feel free to reach out to me here or on https://jaredkunz.com or my linkedin https://www.linkedin.com/in/jaredkunz/. Thank you,
 
